@@ -1,8 +1,9 @@
 import 'package:active_bee/core/app_theme/app_colors.dart';
 import 'package:active_bee/core/app_widgets/bottom_navigation_bar/cubit/bottom_navigation_cubit.dart';
-import 'package:active_bee/features/auth/screens/log_in_screen.dart';
-import 'package:active_bee/features/auth/screens/otp_verification_screen.dart';
 import 'package:active_bee/features/main_screen/main_screen.dart';
+import 'package:active_bee/features/main_screen/screen/home/cubit/location_cubit.dart';
+import 'package:active_bee/features/main_screen/screen/home/manager/location_maneger.dart';
+import 'package:active_bee/features/main_screen/screen/home/manager/server_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,8 +36,14 @@ class MyApp extends StatelessWidget {
               BlocProvider<BottomNavigationCubit>(
                 create: (context) => BottomNavigationCubit(),
               ),
+              BlocProvider<LocationCubit>(
+                create: (context) => LocationCubit(
+                  locationManager: LocationManager(),
+                  serverManager: ServerManager(),
+                )..fetchCityName(),
+              ),
             ],
-            child: LogInScreen(),
+            child: MainScreen(),
           ),
         );
       },

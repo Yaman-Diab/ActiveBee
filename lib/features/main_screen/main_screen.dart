@@ -4,7 +4,6 @@ import 'package:active_bee/features/main_screen/screen/home/home_screen.dart';
 import 'package:active_bee/features/main_screen/screen/my_order_screen.dart';
 import 'package:active_bee/features/main_screen/screen/profile_screen.dart';
 import 'package:active_bee/features/main_screen/screen/search_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,25 +55,25 @@ class _MainScreenState extends State<MainScreen> {
               type: BottomNavigationBarType.fixed,
               items: [
                 bottomNavBarItem(
-                  title: 'Home'.tr(),
+                  title: 'Home',
                   icon: state.pageIndex == 0
                       ? AppAssets.selectedHome
                       : AppAssets.unselectedHome,
                 ),
                 bottomNavBarItem(
-                  title: 'Search'.tr(),
+                  title: 'Search',
                   icon: state.pageIndex == 1
                       ? AppAssets.selectedSearch
                       : AppAssets.unselectedSearch,
                 ),
                 bottomNavBarItem(
-                  title: 'My Order'.tr(),
+                  title: 'My Order',
                   icon: state.pageIndex == 2
                       ? AppAssets.selectedCube
                       : AppAssets.unselectedCube,
                 ),
                 bottomNavBarItem(
-                  title: 'Profile'.tr(),
+                  title: 'Profile',
                   icon: state.pageIndex == 3
                       ? AppAssets.selectedProfile
                       : AppAssets.unselectedProfile,

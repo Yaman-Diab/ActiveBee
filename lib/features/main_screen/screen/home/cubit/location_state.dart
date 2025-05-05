@@ -1,17 +1,17 @@
-// abstract class LocationState {}
+abstract class LocationState {}
 
-// class LocationInitial extends LocationState {}
+class LocationInitial extends LocationState {}
 
-// class LocationLoading extends LocationState {}
+class LocationLoading extends LocationState {}
 
-// class LocationSuccess extends LocationState {
-//   final String cityName;
+class LocationSuccess extends LocationState {
+  final String cityName;
 
-//   LocationSuccess(this.cityName);
-// }
+  LocationSuccess(this.cityName);
+}
 
-// class LocationError extends LocationState {
-//   final String message;
+class LocationError extends LocationState {
+  final String message;
 
-//   LocationError(this.message);
-// }
+  LocationError(this.message);
+}

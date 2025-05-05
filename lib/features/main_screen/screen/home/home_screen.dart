@@ -2,8 +2,11 @@ import 'package:active_bee/core/app_constants/app_assets.dart';
 import 'package:active_bee/core/app_theme/app_colors.dart';
 import 'package:active_bee/core/app_theme/app_text_styles.dart';
 import 'package:active_bee/core/app_widgets/rounded_image.dart';
+import 'package:active_bee/features/main_screen/screen/home/cubit/location_cubit.dart';
+import 'package:active_bee/features/main_screen/screen/home/cubit/location_state.dart';
 import 'package:active_bee/features/main_screen/screen/home/widget/offers_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -42,10 +45,34 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Text("Deliver to:",
                                 style: AppTextStyles.f16W600White),
-                            Text(
-                              "Current location : ",
-                              style: AppTextStyles.f20W600SecColor
-                                  .copyWith(color: AppColors.whiteColor),
+                            BlocBuilder<LocationCubit, LocationState>(
+                              builder: (context, state) {
+                                if (state is LocationLoading) {
+                                  return Text(
+                                    "Location is being \ndetermined...",
+                                    style: AppTextStyles.f20W600SecColor
+                                        .copyWith(color: AppColors.whiteColor),
+                                  );
+                                } else if (state is LocationSuccess) {
+                                  return Text(
+                                    "${state.cityName}",
+                                    style: AppTextStyles.f20W600SecColor
+                                        .copyWith(color: AppColors.whiteColor),
+                                  );
+                                } else if (state is LocationError) {
+                                  return Text(
+                                    state.message,
+                                    style: AppTextStyles.f20W600SecColor
+                                        .copyWith(color: Colors.redAccent),
+                                  );
+                                } else {
+                                  return Text(
+                                    "Current location is: ",
+                                    style: AppTextStyles.f20W600SecColor
+                                        .copyWith(color: AppColors.whiteColor),
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),

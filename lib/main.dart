@@ -4,6 +4,7 @@ import 'package:active_bee/features/main_screen/main_screen.dart';
 import 'package:active_bee/features/main_screen/screen/home/cubit/location_cubit.dart';
 import 'package:active_bee/features/main_screen/screen/home/manager/location_maneger.dart';
 import 'package:active_bee/features/main_screen/screen/home/manager/server_manager.dart';
+import 'package:active_bee/features/main_screen/screen/search/cubit/category_search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             textSelectionTheme: TextSelectionThemeData(
               cursorColor: AppColors.primaryColor,
-              selectionColor: AppColors.primaryColor.withOpacity(0.5),
+              selectionColor: AppColors.primaryColor.withValues(alpha: 0.5),
               selectionHandleColor: AppColors.primaryColor,
             ),
           ),
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
                   serverManager: ServerManager(),
                 )..fetchCityName(),
               ),
+              BlocProvider<CategorySearchCubit>(
+                create: (context) => CategorySearchCubit(),
+              )
             ],
             child: MainScreen(),
           ),

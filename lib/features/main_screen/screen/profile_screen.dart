@@ -1,5 +1,6 @@
 import 'package:active_bee/core/app_constants/app_assets.dart';
 import 'package:active_bee/core/app_theme/app_colors.dart';
+import 'package:active_bee/core/app_theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -158,13 +159,7 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
+                  Text(title, style: AppTextStyles.f20W400SecColor),
                   if (isNew)
                     Container(
                       padding:
@@ -176,10 +171,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'NEW',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10.sp,
-                        ),
+                        style: AppTextStyles.f12W400White
                       ),
                     ),
                 ],

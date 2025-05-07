@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                               builder: (context, state) {
                                 if (state is LocationLoading) {
                                   return Text(
-                                    "Location is being \ndetermined...",
+                                    "Location is being\ndetermined...",
                                     style: AppTextStyles.f20W600SecColor
                                         .copyWith(color: AppColors.whiteColor),
                                   );
@@ -115,19 +115,39 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(
-                            AppAssets.funnyBee,
-                            width: 60,
-                            height: 60,
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                AppAssets.funnyBee,
+                                width: 60,
+                                height: 60,
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Center(
+                                child: Text("Rewards Shop",
+                                    style: AppTextStyles.f20W600SecColor),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Center(
-                            child: Text("Rewards Shop",
-                                style: AppTextStyles.f20W600SecColor),
-                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 8.h, left: 16.w),
+                                child: Icon(Icons.info_outline),
+                              ),
+                              Text(
+                                "0 Point",
+                                style: AppTextStyles.f14W400Grey.copyWith(
+                                  color: AppColors.primaryColor,
+                                ),
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ),

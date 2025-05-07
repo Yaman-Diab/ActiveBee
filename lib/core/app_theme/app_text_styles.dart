@@ -22,6 +22,11 @@ class AppTextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
   );
+  static final TextStyle f20W400SecColor = TextStyle(
+    color: AppColors.secondaryColor,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+  );
 
   /// Font Size 16
   static final TextStyle f16W600White = TextStyle(
@@ -74,6 +79,11 @@ class AppTextStyles {
   /// Font Size 12
   static final TextStyle f12W400SecColor = TextStyle(
     color: AppColors.secondaryColor,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle f12W400White = TextStyle(
+    color: AppColors.whiteColor,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );

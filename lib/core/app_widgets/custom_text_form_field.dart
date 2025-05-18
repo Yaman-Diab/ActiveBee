@@ -117,7 +117,7 @@ class CustomTextFormField extends StatelessWidget {
         cursorColor: AppColors.primaryColor,
         textInputAction: textInputAction,
         keyboardType: keyBoardType,
-        onChanged: onChanged, // ✅ إضافة دعم التغيير
+        onChanged: onChanged,
         decoration: InputDecoration(
           contentPadding:
               EdgeInsets.symmetric(vertical: 10.w, horizontal: 10.h),

@@ -8,4 +8,5 @@ class AppColors {
   static const Color greyFontColor = Color(0xFF898989);
   static const Color errorColor = Colors.red;
   static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
 }

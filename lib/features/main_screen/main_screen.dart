@@ -1,9 +1,9 @@
 import 'package:active_bee/core/app_constants/app_assets.dart';
 import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/features/main_screen/screen/home/home_screen.dart';
-import 'package:active_bee/features/main_screen/screen/my_order_screen.dart';
-import 'package:active_bee/features/main_screen/screen/profile_screen.dart';
-import 'package:active_bee/features/main_screen/screen/search/search_screen.dart';
+import 'package:active_bee/features/main_screen/home/screen/home_screen.dart';
+import 'package:active_bee/features/main_screen/my_order/my_order_screen.dart';
+import 'package:active_bee/features/main_screen/profile/profile_screen.dart';
+import 'package:active_bee/features/main_screen/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

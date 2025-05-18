@@ -8,7 +8,7 @@ class ServerManager {
 
   Future<String> getCityNameFromCoordinates(double lat, double lon) async {
     final url = Uri.parse(
-      'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&lang=ar',
+      '$baseUrl?lat=$lat&lon=$lon&appid=$apiKey&lang=en',
     );
 
     final response = await http.get(url);

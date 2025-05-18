@@ -45,6 +45,21 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.secondaryColor,
   );
+  static final TextStyle f16W400Black = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
+  static final TextStyle f16W500SecColor = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondaryColor,
+  );
+  static final TextStyle f16W600Primary = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
 
   /// Font Size 14
   static final TextStyle f14W500Grey = TextStyle(
@@ -84,6 +99,11 @@ class AppTextStyles {
   );
   static final TextStyle f12W400White = TextStyle(
     color: AppColors.whiteColor,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle f12W400Grey = TextStyle(
+    color: AppColors.greyFontColor,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );

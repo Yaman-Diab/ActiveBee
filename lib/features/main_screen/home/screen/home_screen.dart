@@ -1,10 +1,15 @@
 import 'package:active_bee/core/app_constants/app_assets.dart';
+import 'package:active_bee/core/app_constants/app_categories.dart';
 import 'package:active_bee/core/app_theme/app_colors.dart';
 import 'package:active_bee/core/app_theme/app_text_styles.dart';
+import 'package:active_bee/core/app_widgets/app_categories_container.dart';
 import 'package:active_bee/core/app_widgets/rounded_image.dart';
-import 'package:active_bee/features/main_screen/screen/home/cubit/location_cubit.dart';
-import 'package:active_bee/features/main_screen/screen/home/cubit/location_state.dart';
-import 'package:active_bee/features/main_screen/screen/home/widget/offers_section.dart';
+import 'package:active_bee/features/main_screen/home/cubit/location_cubit.dart';
+import 'package:active_bee/features/main_screen/home/cubit/location_state.dart';
+import 'package:active_bee/features/main_screen/home/screen/my_cart.dart';
+import 'package:active_bee/features/main_screen/home/widget/offers_section.dart';
+import 'package:active_bee/features/app_categories/restaurants_screen.dart';
+import 'package:active_bee/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,7 +92,13 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Spacer(),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MyCart(),
+                              ),
+                            );
+                          },
                           icon: Icon(
                             Icons.shopping_cart_outlined,
                             color: AppColors.whiteColor,
@@ -128,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                                 width: 8.w,
                               ),
                               Center(
-                                child: Text("Rewards Shop",
+                                child: Text("Loyalty Store",
                                     style: AppTextStyles.f20W600SecColor),
                               ),
                             ],
@@ -141,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                                 child: Icon(Icons.info_outline),
                               ),
                               Text(
-                                "0 Point",
+                                "0 Points",
                                 style: AppTextStyles.f14W400Grey.copyWith(
                                   color: AppColors.primaryColor,
                                 ),
@@ -168,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                         Expanded(
                           child: PageView(
                             controller: _pageController,
-                            children: const [
+                            children: [
                               RoundedImage(
                                 imagePath: AppAssets.orderNow,
                               ),
@@ -205,30 +216,20 @@ class HomeScreen extends StatelessWidget {
                     height: 100.h,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 6,
+                      itemCount: appCategories.length,
                       separatorBuilder: (context, index) =>
                           SizedBox(width: 8.w),
                       itemBuilder: (context, index) {
-                        final categories = [
-                          {"title": "Restaurants", "icon": Icons.restaurant},
-                          {
-                            "title": "Supermarket",
-                            "icon": Icons.local_grocery_store
+                        return AppCategoriesContainer(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RestaurantsScreen(),
+                              ),
+                            );
                           },
-                          {"title": "Stores", "icon": Icons.storefront},
-                          {
-                            "title": "Electronics",
-                            "icon": Icons.electrical_services
-                          },
-                          {"title": "Cosmetics", "icon": Icons.auto_awesome},
-                          {
-                            "title": "Stationery",
-                            "icon": Icons.architecture_rounded
-                          },
-                        ];
-                        return _buildCategoryItem(
-                          categories[index]['title'] as String,
-                          categories[index]['icon'] as IconData,
+                          icon: appCategories[index]['icon'] as IconData,
+                          title: appCategories[index]['title'] as String,
                         );
                       },
                     ),
@@ -300,34 +301,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildCategoryItem(String title, IconData icon) {
-    return Container(
-      width: 88.w,
-      padding: EdgeInsets.all(8.r),
-      decoration: BoxDecoration(
-          color: AppColors.whiteColor,
-          borderRadius: BorderRadius.circular(12.r)),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 24.r,
-            backgroundColor: AppColors.thirdColor,
-            child: Icon(
-              icon,
-              color: AppColors.secondaryColor,
-              size: 32,
-            ),
-          ),
-          SizedBox(height: 8.h),
-          Text(
-            title,
-            style: AppTextStyles.f12W400SecColor,
-          ),
-        ],
       ),
     );
   }

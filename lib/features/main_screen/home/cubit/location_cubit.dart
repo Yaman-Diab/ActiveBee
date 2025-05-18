@@ -1,6 +1,6 @@
-import 'package:active_bee/features/main_screen/screen/home/cubit/location_state.dart';
-import 'package:active_bee/features/main_screen/screen/home/manager/location_maneger.dart';
-import 'package:active_bee/features/main_screen/screen/home/manager/server_manager.dart';
+import 'package:active_bee/features/main_screen/home/cubit/location_state.dart';
+import 'package:active_bee/features/main_screen/home/manager/location_maneger.dart';
+import 'package:active_bee/features/main_screen/home/manager/server_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LocationCubit extends Cubit<LocationState> {

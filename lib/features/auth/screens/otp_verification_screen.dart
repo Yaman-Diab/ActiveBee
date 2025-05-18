@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
-class OTPVerificationScreen extends StatefulWidget {
-  const OTPVerificationScreen({super.key});
+class OtpVerificationScreen extends StatefulWidget {
+  const OtpVerificationScreen({super.key});
 
   @override
-  State<OTPVerificationScreen> createState() => _OTPVerificationScreenState();
+  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
-class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
+class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final TextEditingController otpController = TextEditingController();
   late final PinTheme defaultPinTheme;
   late final PinTheme focusedPinTheme;
@@ -53,7 +53,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: Colors.red, width: 2.w),
+        border: Border.all(color: AppColors.errorColor, width: 2.w),
       ),
     );
   }

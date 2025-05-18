@@ -1,10 +1,11 @@
 import 'package:active_bee/core/app_constants/app_assets.dart';
 import 'package:active_bee/core/app_theme/app_colors.dart';
 import 'package:active_bee/core/app_theme/app_text_styles.dart';
+import 'package:active_bee/core/app_widgets/food_categories_container.dart';
 import 'package:active_bee/core/app_widgets/custom_text_form_field.dart';
-import 'package:active_bee/features/main_screen/screen/home/cubit/location_cubit.dart';
-import 'package:active_bee/features/main_screen/screen/home/cubit/location_state.dart';
-import 'package:active_bee/features/main_screen/screen/search/cubit/category_search_cubit.dart';
+import 'package:active_bee/features/main_screen/home/cubit/location_cubit.dart';
+import 'package:active_bee/features/main_screen/home/cubit/location_state.dart';
+import 'package:active_bee/features/main_screen/search/cubit/category_search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -139,23 +140,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       itemBuilder: (context, index) {
                         final item = filteredCategories[index];
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.thirdColor,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(item['image']!,
-                                  height: 100, fit: BoxFit.fill),
-                              SizedBox(height: 8.h),
-                              Text(
-                                item['label']!,
-                                style: AppTextStyles.f14W600SecColor,
-                              ),
-                            ],
-                          ),
+                        return FoodCategoriesContainer(
+                          item: item,
+                          ContainerHeight: 100,
                         );
                       },
                     );

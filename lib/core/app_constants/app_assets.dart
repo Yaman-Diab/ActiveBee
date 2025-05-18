@@ -25,6 +25,9 @@ abstract class AppAssets {
   static const String rice = "assets/images/jpg/rice.jpg";
   static const String grills = "assets/images/jpg/grills.jpg";
   static const String taco = "assets/images/jpg/taco.jpg";
+  static const String juice = "assets/images/jpg/juice.jpeg";
+  static const String iceCream = "assets/images/jpg/icecream.jpeg";
+  static const String kfcLogo = "assets/images/jpg/KFC.jpg";
 
   // Icons (SVG)
   static const String closedEye = "assets/images/svg/closed_eye.svg";

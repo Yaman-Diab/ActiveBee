@@ -1,19 +1,23 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/core/app_constants/app_categories.dart';
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/food_categories_container.dart';
-import 'package:active_bee/features/app_categories/constant/all_resturants.dart';
-import 'package:active_bee/features/app_categories/widget/filter_chip_item.dart';
-import 'package:active_bee/features/app_categories/widget/restaurant_item_card.dart';
-import 'package:active_bee/features/app_categories/widget/sort_by_chip.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/core/constant/app_categories.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/food_categories_container.dart';
+import 'package:active_bee/features/restaurant_flow/data/all_resturants.dart';
+import 'package:active_bee/features/restaurant_flow/widget/filter_chip_item.dart';
+import 'package:active_bee/features/restaurant_flow/widget/restaurant_item_card.dart';
+import 'package:active_bee/features/restaurant_flow/widget/sort_by_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RestaurantsScreen extends StatelessWidget {
-  const RestaurantsScreen({super.key});
-
+  final List<Widget> chips = [
+    FilterChipItem(label: "Online"),
+    FilterChipItem(label: "24 h"),
+    FilterChipItem(label: "Free Delivery"),
+    SortByChip(onTap: () {}),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,15 +77,17 @@ class RestaurantsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                FilterChipItem(label: "Online"),
-                FilterChipItem(label: "24 h"),
-                FilterChipItem(label: "Free Delivery"),
-                SortByChip(onTap: () {}),
-              ],
+
+            SizedBox(
+              height: 40.h, // ارتفاع مناسب حسب حجم الشيبس عندك
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: chips.length,
+                itemBuilder: (context, index) => chips[index],
+                separatorBuilder: (context, index) => SizedBox(width: 4),
+              ),
             ),
+
             SizedBox(height: 16.h),
 
             // ✅ استخدام allRestaurant هنا

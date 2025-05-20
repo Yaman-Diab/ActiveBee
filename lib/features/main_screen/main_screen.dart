@@ -1,5 +1,5 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/core/app_theme/app_colors.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
 import 'package:active_bee/features/main_screen/home/screen/home_screen.dart';
 import 'package:active_bee/features/main_screen/my_order/my_order_screen.dart';
 import 'package:active_bee/features/main_screen/profile/profile_screen.dart';
@@ -7,8 +7,8 @@ import 'package:active_bee/features/main_screen/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/app_widgets/bottom_navigation_bar/bottom_navigation_bar_items.dart';
-import '../../core/app_widgets/bottom_navigation_bar/cubit/bottom_navigation_cubit.dart';
+import '../../core/widgets/bottom_navigation_bar/bottom_navigation_bar_items.dart';
+import '../../core/widgets/bottom_navigation_bar/cubit/bottom_navigation_cubit.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

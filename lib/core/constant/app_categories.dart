@@ -1,4 +1,4 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
 import 'package:flutter/material.dart';
 
 final appCategories = [

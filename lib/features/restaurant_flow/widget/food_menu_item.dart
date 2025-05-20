@@ -1,7 +1,8 @@
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/features/app_categories/models/food_menu_item.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/features/restaurant_flow/models/food_menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FoodMenuItem extends StatelessWidget {
   final FoodMenuItemModel item;
@@ -14,7 +15,7 @@ class FoodMenuItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      color: AppColors.backgroundColor,
+      color: Colors.white,
       margin: EdgeInsets.zero,
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -30,13 +31,13 @@ class FoodMenuItem extends StatelessWidget {
                     style: AppTextStyles.f20W600SecColor,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.h),
                   Text(
                     item.description,
                     style: AppTextStyles.f12W400SecColor,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Row(
                     children: [
                       Text(
@@ -44,14 +45,14 @@ class FoodMenuItem extends StatelessWidget {
                         style: AppTextStyles.f16W500SecColor,
                       ),
                       if (item.oldPrice != null && item.discount != null) ...[
-                        const SizedBox(width: 6),
+                        SizedBox(width: 6.w),
                         Text(
                           item.oldPrice!,
                           style: AppTextStyles.f12W400SecColor.copyWith(
                             decoration: TextDecoration.lineThrough,
                           ),
                         ),
-                        const SizedBox(width: 6),
+                        SizedBox(width: 6.w),
                         Text(
                           item.discount!,
                           style: AppTextStyles.f16W600Primary,
@@ -64,11 +65,11 @@ class FoodMenuItem extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(12.r),
               child: Image.asset(
                 item.image,
-                width: 80,
-                height: 80,
+                width: 120.w,
+                height: 80.h,
                 fit: BoxFit.cover,
               ),
             ),

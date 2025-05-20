@@ -1,6 +1,6 @@
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/features/app_categories/models/restaurant_model.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/features/restaurant_flow/models/restaurant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class RestaurantInfo extends StatelessWidget {
         // Container الأساسي
         Container(
           decoration: BoxDecoration(
-            color: AppColors.backgroundColor,
+            color: AppColors.whiteColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.r),
               topRight: Radius.circular(20.r),
@@ -108,8 +108,7 @@ class RestaurantInfo extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color.fromARGB(255, 0, 0, 0)
-                        .withValues(alpha: 0.3),
+                    color: Colors.black.withValues(alpha: 0.3),
                     blurRadius: 8,
                     offset: Offset(4, -4),
                   ),

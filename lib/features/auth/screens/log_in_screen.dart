@@ -1,10 +1,13 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/app_button.dart';
-import 'package:active_bee/core/app_widgets/custom_text_form_field.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/core/cubit/auth_cubit.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/app_button.dart';
+import 'package:active_bee/core/widgets/custom_text_form_field.dart';
 import 'package:active_bee/features/auth/screens/show_bottom_sheet.dart';
+import 'package:active_bee/features/main_screen/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -71,8 +74,14 @@ class LogInScreen extends StatelessWidget {
               AppButton(
                 buttonText: "Agree",
                 buttonOnPressed: () {
-                  showBottomSheet.showPhoneConfirmationDialog(
-                      context, "0938920500");
+                  context.read<AuthCubit>().logIn();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                  // showBottomSheet.showPhoneConfirmationDialog(
+                  // context, "0938920500");
                 },
               ),
               SizedBox(height: 28.h),

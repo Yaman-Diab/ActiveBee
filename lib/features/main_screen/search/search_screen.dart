@@ -1,8 +1,8 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/food_categories_container.dart';
-import 'package:active_bee/core/app_widgets/custom_text_form_field.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/food_categories_container.dart';
+import 'package:active_bee/core/widgets/custom_text_form_field.dart';
 import 'package:active_bee/features/main_screen/home/cubit/location_cubit.dart';
 import 'package:active_bee/features/main_screen/home/cubit/location_state.dart';
 import 'package:active_bee/features/main_screen/search/cubit/category_search_cubit.dart';

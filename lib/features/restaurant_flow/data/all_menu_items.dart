@@ -1,7 +1,7 @@
 // core/mock_data/menu_items_data.dart
 
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/features/app_categories/models/food_menu_item.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/features/restaurant_flow/models/food_menu_item.dart';
 
 final List<FoodMenuItemModel> allMenuItems = [
   // 🟢 burgerS
@@ -18,7 +18,7 @@ final List<FoodMenuItemModel> allMenuItems = [
     title: 'Pepperoni burger',
     description: 'Spicy pepperoni with cheese blend and tomato sauce',
     price: '55,000 SYP',
-    oldPrice: '70,000 SYP',
+    oldPrice: '70,000',
     discount: '21% Off',
     image: AppAssets.burger,
     category: 'burgers',
@@ -47,7 +47,7 @@ final List<FoodMenuItemModel> allMenuItems = [
     title: 'Fresh Orange Juice',
     description: 'Freshly squeezed orange juice (400ml)',
     price: '15,000 SYP',
-    oldPrice: '20,000 SYP',
+    oldPrice: '20,000',
     discount: '25% Off',
     image: AppAssets.juice,
     category: 'Drinks',
@@ -76,7 +76,7 @@ final List<FoodMenuItemModel> allMenuItems = [
     title: 'Cheesecake',
     description: 'Creamy cheesecake with strawberry topping',
     price: '25,000 SYP',
-    oldPrice: '32,000 SYP',
+    oldPrice: '32,000',
     discount: '22% Off',
     image: AppAssets.dessert,
     category: 'Desserts',

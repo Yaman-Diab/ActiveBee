@@ -1,7 +1,7 @@
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/app_button.dart';
-import 'package:active_bee/core/app_widgets/custom_text_form_field.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/app_button.dart';
+import 'package:active_bee/core/widgets/custom_text_form_field.dart';
 import 'package:active_bee/features/auth/widgets/custom_dropdown_field.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

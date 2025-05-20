@@ -1,17 +1,23 @@
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SortByChip extends StatelessWidget {
+class FilterChipItem extends StatelessWidget {
+  final String label;
   final VoidCallback? onTap;
 
-  const SortByChip({Key? key, this.onTap}) : super(key: key);
+  const FilterChipItem({
+    Key? key,
+    required this.label,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.only(bottom: 4.h),
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
         decoration: BoxDecoration(
           color: Colors.grey[200],
@@ -24,12 +30,7 @@ class SortByChip extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Text("Sort by", style: AppTextStyles.f16W400Black),
-            Icon(Icons.keyboard_arrow_down),
-          ],
-        ),
+        child: Text(label, style: AppTextStyles.f16W400Black),
       ),
     );
   }

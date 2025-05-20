@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class MyCart extends StatelessWidget {
-  const MyCart({super.key});
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class MyCart extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         title: Text(
-          "My Cart",
+          "Favorite Screen",
           style: AppTextStyles.f20W600SecColor,
         ),
         centerTitle: true,
@@ -28,7 +28,7 @@ class MyCart extends StatelessWidget {
       ),
       body: Center(
           child: Text(
-        "No carts added",
+        "No Favorites Yet",
         style: AppTextStyles.f14W600SecColor,
       )),
     );

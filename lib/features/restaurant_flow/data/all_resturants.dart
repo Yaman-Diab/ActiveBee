@@ -1,5 +1,5 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/features/app_categories/models/restaurant_model.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/features/restaurant_flow/models/restaurant_model.dart';
 
 final List<RestaurantModel> allRestaurant = [
   RestaurantModel(

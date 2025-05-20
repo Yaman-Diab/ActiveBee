@@ -1,9 +1,11 @@
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/rounded_image.dart';
-import 'package:active_bee/features/app_categories/models/restaurant_model.dart';
-import 'package:active_bee/features/app_categories/restaurant_details_page%20.dart';
+import 'package:active_bee/core/cubit/favorite_cubit.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/rounded_image.dart';
+import 'package:active_bee/features/restaurant_flow/models/restaurant_model.dart';
+import 'package:active_bee/features/restaurant_flow/restaurant_details_page%20.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RestaurantItemCard extends StatelessWidget {
@@ -23,7 +25,10 @@ class RestaurantItemCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => RestaurantDetailsPage(restaurant: restaurant),
+            builder: (context) => BlocProvider(
+              create: (_) => FavoriteCubit(),
+              child: RestaurantDetailsPage(restaurant: restaurant),
+            ),
           ),
         );
       },
@@ -75,9 +80,17 @@ class RestaurantItemCard extends StatelessWidget {
           Positioned(
             top: 100.h,
             right: 16.w,
-            child: CircleAvatar(
-              radius: 24.r,
-              backgroundColor: Colors.white,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    offset: Offset(4, -4),
+                  ),
+                ],
+              ),
               child: CircleAvatar(
                 radius: 22.r,
                 backgroundImage: AssetImage(restaurant.logoPath),
@@ -87,10 +100,10 @@ class RestaurantItemCard extends StatelessWidget {
 
           // مؤشر الحالة (مثلاً Online)
           Positioned(
-            top: 135.h,
+            top: 130.h,
             right: 12.w,
             child: CircleAvatar(
-              radius: 8.r,
+              radius: 6.r,
               backgroundColor:
                   (restaurant.isOpened == true) ? Colors.green : Colors.grey,
             ),

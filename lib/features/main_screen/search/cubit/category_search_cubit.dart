@@ -1,4 +1,4 @@
-import 'package:active_bee/core/app_constants/app_categories.dart';
+import 'package:active_bee/core/constant/app_categories.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategorySearchCubit extends Cubit<List<Map<String, String>>> {

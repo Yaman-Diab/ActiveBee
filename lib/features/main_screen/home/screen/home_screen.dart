@@ -1,15 +1,17 @@
-import 'package:active_bee/core/app_constants/app_assets.dart';
-import 'package:active_bee/core/app_constants/app_categories.dart';
-import 'package:active_bee/core/app_theme/app_colors.dart';
-import 'package:active_bee/core/app_theme/app_text_styles.dart';
-import 'package:active_bee/core/app_widgets/app_categories_container.dart';
-import 'package:active_bee/core/app_widgets/rounded_image.dart';
+import 'package:active_bee/core/constant/app_assets.dart';
+import 'package:active_bee/core/constant/app_categories.dart';
+import 'package:active_bee/core/cubit/auth_cubit.dart';
+import 'package:active_bee/core/cubit/auth_state.dart';
+import 'package:active_bee/core/theme/app_colors.dart';
+import 'package:active_bee/core/theme/app_text_styles.dart';
+import 'package:active_bee/core/widgets/app_categories_container.dart';
+import 'package:active_bee/core/widgets/rounded_image.dart';
 import 'package:active_bee/features/main_screen/home/cubit/location_cubit.dart';
 import 'package:active_bee/features/main_screen/home/cubit/location_state.dart';
+import 'package:active_bee/features/main_screen/home/screen/favorite_screen.dart';
 import 'package:active_bee/features/main_screen/home/screen/my_cart.dart';
 import 'package:active_bee/features/main_screen/home/widget/offers_section.dart';
-import 'package:active_bee/features/app_categories/restaurants_screen.dart';
-import 'package:active_bee/main.dart';
+import 'package:active_bee/features/restaurant_flow/restaurants_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,78 +37,108 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.all(12.w),
                     height: 160.h,
                     color: AppColors.primaryColor,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on_rounded,
-                          color: Colors.white,
-                          size: 32,
-                        ),
-                        SizedBox(width: 4.w),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text("Deliver to:",
-                                style: AppTextStyles.f16W600White),
-                            BlocBuilder<LocationCubit, LocationState>(
-                              builder: (context, state) {
-                                if (state is LocationLoading) {
-                                  return Text(
-                                    "Location is being\ndetermined...",
-                                    style: AppTextStyles.f20W600SecColor
-                                        .copyWith(color: AppColors.whiteColor),
-                                  );
-                                } else if (state is LocationSuccess) {
-                                  return Text(
-                                    "${state.cityName}",
-                                    style: AppTextStyles.f20W600SecColor
-                                        .copyWith(color: AppColors.whiteColor),
-                                  );
-                                } else if (state is LocationError) {
-                                  return Text(
-                                    state.message,
-                                    style: AppTextStyles.f20W600SecColor
-                                        .copyWith(color: Colors.redAccent),
-                                  );
-                                } else {
-                                  return Text(
-                                    "Current location is: ",
-                                    style: AppTextStyles.f20W600SecColor
-                                        .copyWith(color: AppColors.whiteColor),
-                                  );
-                                }
-                              },
-                            ),
-                          ],
-                        ),
-                        SizedBox(width: 4.w),
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_drop_down,
-                            color: AppColors.whiteColor,
-                            size: 36,
-                          ),
-                          onPressed: () {},
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => MyCart(),
-                              ),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.shopping_cart_outlined,
+                    child: BlocBuilder<AuthCubit, AuthState>(
+                        builder: (context, state) {
+                      final isLoggedIn = state is AuthLoggedIn;
+                      return Row(
+                        children: [
+                          Icon(
+                            Icons.location_on_rounded,
                             color: AppColors.whiteColor,
                             size: 32,
                           ),
-                        ),
-                      ],
-                    ),
+                          SizedBox(width: 4.w),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text("Deliver to:",
+                                  style: AppTextStyles.f16W600White),
+                              BlocBuilder<LocationCubit, LocationState>(
+                                builder: (context, state) {
+                                  if (state is LocationLoading) {
+                                    return Text(
+                                      "Location is being\ndetermined...",
+                                      style: AppTextStyles.f20W600SecColor
+                                          .copyWith(
+                                              color: AppColors.whiteColor),
+                                    );
+                                  } else if (state is LocationSuccess) {
+                                    return Text(
+                                      "${state.cityName}",
+                                      style: AppTextStyles.f20W600SecColor
+                                          .copyWith(
+                                              color: AppColors.whiteColor),
+                                    );
+                                  } else if (state is LocationError) {
+                                    return Text(
+                                      state.message,
+                                      style: AppTextStyles.f20W600SecColor
+                                          .copyWith(color: Colors.redAccent),
+                                    );
+                                  } else {
+                                    return Text(
+                                      "Current location is: ",
+                                      style: AppTextStyles.f20W600SecColor
+                                          .copyWith(
+                                              color: AppColors.whiteColor),
+                                    );
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_drop_down,
+                              color: AppColors.whiteColor,
+                              size: 36,
+                            ),
+                            onPressed: () {},
+                          ),
+                          Spacer(),
+                          if (isLoggedIn)
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => FavoriteScreen()),
+                                );
+                              },
+                              child: Icon(
+                                Icons.favorite_border,
+                                color: AppColors.whiteColor,
+                                size: 32,
+                              ),
+                            ),
+                          SizedBox(width: 8.w),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => MyCart()),
+                              );
+                            },
+                            child: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: AppColors.whiteColor,
+                              size: 32,
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          if (isLoggedIn)
+                            GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.notifications_active_outlined,
+                                color: AppColors.whiteColor,
+                                size: 32,
+                              ),
+                            ),
+                        ],
+                      );
+                    }),
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,
@@ -256,12 +288,25 @@ class HomeScreen extends StatelessWidget {
                           height: 68,
                         ),
                         SizedBox(width: 8.w),
-                        Expanded(
-                          child: Text(
-                            "Sign in and get \nspecial discounts",
-                            style: AppTextStyles.f16W400SecColor,
-                          ),
-                        ),
+                        Expanded(child: BlocBuilder<AuthCubit, AuthState>(
+                          builder: (context, state) {
+                            if (state is AuthLoggedIn) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text("No Vouchers Available",
+                                      style: AppTextStyles.f16W400SecColor),
+                                  Text("You don't have vouchers right now",
+                                      style: AppTextStyles.f12W400SecColor),
+                                ],
+                              );
+                            } else {
+                              return Text("Sign in and get \nspecial discounts",
+                                  style: AppTextStyles.f16W400SecColor);
+                            }
+                          },
+                        )),
                         const Icon(Icons.arrow_forward_ios,
                             size: 36, color: AppColors.primaryColor),
                       ],
